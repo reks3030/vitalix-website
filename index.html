@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barangay Health Worker Records</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1976d2">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #d1f2eb, #a3e4d7);
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 320px;
+            text-align: center;
+        }
+        .login-container .icon {
+            font-size: 48px;
+            color: #17a589;
+            margin-bottom: 10px;
+        }
+        .login-container h2 {
+            margin: 0 0 20px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bfc9ca;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #17a589;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .form-group button:hover {
+            background-color: #138d75;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="icon">✚</div>
+        <h2>Welcome Barangay Health Worker</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            if (username === 'VITALEX' && password === 'EZCR') {
+                window.open('main.html', '_self');
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registered!', reg))
+                .catch(err => console.error('Service Worker registration failed:', err));
+        }
+    </script>
+
+</body>
+</html>
